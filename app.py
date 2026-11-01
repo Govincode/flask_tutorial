@@ -1,4 +1,4 @@
-from flask import Flask , request
+from flask import Flask , request ,render_template
 from uuid import UUID
 
 app = Flask(__name__)
@@ -6,14 +6,15 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Hello world"
+    details = {
+        "name" : "govinda chalaune",
+        "age" : 24,
+        "city" : "lamki"
+    }
+    return render_template("index.html",details=details)
     
 
-@app.route("/search")
-def search():
-    name = request.args.get("name","guest")
-    course = request.args.get("course","unknown")
-    return f"{name} is learning {course}"
+
 
 
 
