@@ -3,12 +3,18 @@ from uuid import UUID
 
 app = Flask(__name__)
 
-#ifelse in flask
+#template inheritance in flask
 @app.route("/")
 def home():
-   names = ["govinda","Hari","Shyam"]
-   return render_template("index.html",names=names)
-    
+   return render_template("index.html")
+
+@app.route("/About")
+def About():
+   return render_template("About.html")
+
+@app.route("/Contact")
+def Contact():
+   return render_template("Contact.html")   
 
 
 
