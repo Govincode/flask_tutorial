@@ -6,9 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello {{details["name"]}}</h1>
-    <h1>Age: {{details["age"]}}</h1>
-    <h1>City: {{details["city"]}}</h1>
+    
+
+    {%for name in names%}
+    <h1>{{loop.index}} {{name}}</h1>
+    {%endfor%}
     
 </body>
 </html>

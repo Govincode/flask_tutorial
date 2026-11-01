@@ -3,15 +3,11 @@ from uuid import UUID
 
 app = Flask(__name__)
 
-
+#ifelse in flask
 @app.route("/")
 def home():
-    details = {
-        "name" : "govinda chalaune",
-        "age" : 24,
-        "city" : "lamki"
-    }
-    return render_template("index.html",details=details)
+   names = ["govinda","Hari","Shyam"]
+   return render_template("index.html",names=names)
     
 
 
