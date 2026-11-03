@@ -2,7 +2,7 @@
 {% extends 'base.html' %}
 {% block content %}
     
-<form class="row gx-3 gy-2 align-items-center" method="POST" action="{{ url_for('login_validation' ) }}">
+<form class="row gx-3 gy-2 align-items-center" method="POST" action="{{ url_for('auth.login' ) }}">
   <div class="sm:col-3">
     <label class="visually-hidden" for="specificSizeInputName">Name</label>
     <input name="username" type="text" class="form-control" id="username" placeholder="username">

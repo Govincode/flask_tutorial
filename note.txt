@@ -1,5 +1,30 @@
-.env is the file where all the secrect key and sensitive information are stored like secret_key, api_key etc
+## I. Understanding Flask Blueprints (0:00-1:54)
 
-we have to instal python dotenv module to work with .env file
+*   **Purpose**: Blueprints are used for **project modularization**, allowing developers to organize large Flask applications into smaller, manageable modules (e.g., separating user, product, or order routes).
+*   **The Problem**: Managing thousands of routes in a single `app.py` file becomes difficult to maintain as a project grows.
 
-command : mac : pip install python dotenv
+## II. Project Structure Setup (1:56-3:10)
+
+*   **Folder Organization**: Create separate folders for each module (e.g., `users/`, `products/`).
+*   **Required Files**: Each module folder should contain an `__init__.py` file and a `routes.py` file to keep logic separated.
+
+## III. Creating and Registering Blueprints (3:11-6:50)
+
+*   **Initialization**: Import `Blueprint` from `flask` and instantiate it using the folder name and `__name__`.
+    *   Example: `users_bp = Blueprint('users', __name__)`
+*   **Defining Routes**: Use the blueprint instance to define routes, similar to standard `app.route` decorators.
+    *   Example: `@users_bp.route('/users')`
+*   **Registration**: Import the blueprint into `app.py` and register it using `app.register_blueprint()`.
+
+## IV. Using URL Prefixes (6:51-8:45)
+
+*   **Definition**: `url_prefix` allows you to set a base path for all routes within a blueprint.
+    *   Example: If `url_prefix='/users'` is set, a route defined as `@bp.route('/profile')` will be accessible at `/users/profile`.
+
+## V. Blueprint Workflow Summary (8:46-9:50)
+
+*   **Summary**: The typical flow involves:
+    1.  Creating a `routes.py` file within a module folder.
+    2.  Initializing the `Blueprint` object.
+    3.  Defining routes on that object.
+    4.  Importing and registering the blueprint in the main `app.py` file.
