@@ -1,0 +1,5 @@
+.env is the file where all the secrect key and sensitive information are stored like secret_key, api_key etc
+
+we have to instal python dotenv module to work with .env file
+
+command : mac : pip install python dotenv

@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+{% block content %}
+    
+<form class="row gx-3 gy-2 align-items-center" method="POST" action="{{ url_for('login_validation' ) }}">
+  <div class="sm:col-3">
+    <label class="visually-hidden" for="specificSizeInputName">Name</label>
+    <input name="username" type="text" class="form-control" id="username" placeholder="username">
+  </div>
+  <div class="sm:col-3">
+    <label class="visually-hidden" for="specificSizeInputGroupUsername">Username</label>
+    <div class="input-group">
+      
+      <input name="password" type="text" class="form-control" id="password" placeholder="password">
+    </div>
+  </div>
+  <div class="col-auto">
+    <button type="submit" class="btn-solid theme-primary">login</button>
+  </div>
+</form>
+{% endblock %}
