@@ -1,30 +1,27 @@
-## I. Understanding Flask Blueprints (0:00-1:54)
+## I. Introduction to Database Integration (0:00-1:42)
 
-*   **Purpose**: Blueprints are used for **project modularization**, allowing developers to organize large Flask applications into smaller, manageable modules (e.g., separating user, product, or order routes).
-*   **The Problem**: Managing thousands of routes in a single `app.py` file becomes difficult to maintain as a project grows.
+*   **Purpose**: Transitioning from storing data in variables/sessions to using a **database** for permanent storage in real-world applications (e.g., job portals, registration forms).
+*   **Core Objective**: Connecting a **Flask** application to a database using **SQLite** and **SQLAlchemy**.
 
-## II. Project Structure Setup (1:56-3:10)
+## II. Database Concepts (1:42-3:51)
 
-*   **Folder Organization**: Create separate folders for each module (e.g., `users/`, `products/`).
-*   **Required Files**: Each module folder should contain an `__init__.py` file and a `routes.py` file to keep logic separated.
+*   **Database**: A system for storing application data permanently in tables with rows and columns (e.g., ID, name, email).
+*   **SQLite**: A lightweight, file-based relational database that is built into Flask and requires no separate server setup; acts like a "digital notebook" for data.
 
-## III. Creating and Registering Blueprints (3:11-6:50)
+## III. SQLAlchemy & ORM (3:52-4:47)
 
-*   **Initialization**: Import `Blueprint` from `flask` and instantiate it using the folder name and `__name__`.
-    *   Example: `users_bp = Blueprint('users', __name__)`
-*   **Defining Routes**: Use the blueprint instance to define routes, similar to standard `app.route` decorators.
-    *   Example: `@users_bp.route('/users')`
-*   **Registration**: Import the blueprint into `app.py` and register it using `app.register_blueprint()`.
+*   **SQLAlchemy**: A popular Python SQL toolkit and **Object Relational Mapper (ORM)**.
+*   **ORM**: Maps Python classes and objects to database tables, allowing developers to interact with the database using Python code instead of raw SQL queries.
 
-## IV. Using URL Prefixes (6:51-8:45)
+## IV. Setup and Configuration (4:48-8:04)
 
-*   **Definition**: `url_prefix` allows you to set a base path for all routes within a blueprint.
-    *   Example: If `url_prefix='/users'` is set, a route defined as `@bp.route('/profile')` will be accessible at `/users/profile`.
+1.  **Installation**: Run `pip install flask-sqlalchemy` to add the library to the project.
+2.  **Configuration**:
+    *   Set `SQLALCHEMY_DATABASE_URI` in the Flask app configuration to define the database file path (e.g., `sqlite:///app.db`).
+    *   Initialize the SQLAlchemy object by wrapping the Flask `app` instance.
+3.  **Usage**: The `db` variable created during setup is used for all future CRUD (Create, Read, Update, Delete) operations.
 
-## V. Blueprint Workflow Summary (8:46-9:50)
+## V. Verification (8:05-9:14)
 
-*   **Summary**: The typical flow involves:
-    1.  Creating a `routes.py` file within a module folder.
-    2.  Initializing the `Blueprint` object.
-    3.  Defining routes on that object.
-    4.  Importing and registering the blueprint in the main `app.py` file.
+*   **Running the App**: Execute the application to ensure connectivity.
+*   **Database File**: Upon running, a local file (e.g., `app.db`) is automatically generated within an `instance` folder.

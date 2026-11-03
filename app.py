@@ -3,11 +3,16 @@ from uuid import UUID
 import os
 from dotenv import load_dotenv
 from auth.routes import auth
+from flask_sqlalchemy import SQLAlchemy
 
 load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRECT_KEY")
+
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqllite:///app.db"
+
+db = SQLAlchemy(app)
 
 app.register_blueprint(auth)
 
@@ -28,8 +33,6 @@ def contactus():
 def dashboard():
     username = session.get('username')
     return render_template("dashboard.html",username = username)
-
-
 
 
 
