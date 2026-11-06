@@ -27,4 +27,6 @@ def signup():
 
 @auth.route('/logout')
 def logout():
-    pass
+    session.pop("logged_in")
+    session.pop("username")
+    return redirect(url_for("home"))
